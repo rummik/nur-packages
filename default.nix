@@ -14,6 +14,9 @@ rec {
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  dptf = pkgs.callPackage ./pkgs/dptf {};
+  dptf = pkgs.callPackage ./pkgs/dptf {
+    inherit dptf-unwrapped;
+  };
+  dptf-unwrapped = pkgs.callPackage ./pkgs/dptf-unwrapped {};
   dptfxtract = pkgs.callPackage ./pkgs/dptfxtract {};
 }

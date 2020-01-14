@@ -25,6 +25,12 @@ in
       description = "Intel Dynamic Tuning daemon";
       wantedBy = [ "sysinit.target" ];
 
+      conflicts = [
+        "tlp.service"
+        "thermald.service"
+        "thinkfan.service"
+      ];
+
       serviceConfig = {
         Type = "forking";
         Restart = "always";
