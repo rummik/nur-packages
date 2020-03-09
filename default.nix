@@ -15,8 +15,8 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   dptf = pkgs.callPackage ./pkgs/dptf {
-    inherit dptf-unwrapped;
+    stdenv = pkgs.gcc7Stdenv;
   };
-  dptf-unwrapped = pkgs.callPackage ./pkgs/dptf-unwrapped {};
+
   dptfxtract = pkgs.callPackage ./pkgs/dptfxtract {};
 }

@@ -17,26 +17,19 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.nur.repos.rummik.dptf
-    ];
+    #boot.kernelModules = [ "dtpf_power" ];
+    #add_drivers+=" intel_soc_dts_iosf processor_thermal_device int3403_thermal int340x_thermal_zone int3400_thermal acpi_thermal_rel "
 
     systemd.services.dptf = {
       description = "Intel Dynamic Tuning daemon";
       wantedBy = [ "sysinit.target" ];
 
-      conflicts = [
-        "tlp.service"
-        "thermald.service"
-        "thinkfan.service"
-      ];
+      conflicts = [ ];
 
       serviceConfig = {
         Type = "forking";
         Restart = "always";
-        ExecStart = /* sh */ ''
-          ${pkg}/bin/esif_ufd
-        '';
+        ExecStart = "${pkg}/bin/esif_ufd -l -x";
       };
     };
   };
