@@ -14,6 +14,10 @@ rec {
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  hm = home-manager;
+  home-manager = hmModules;
+  hmModules.modules = import ./home-manager;
+
   dptf = pkgs.callPackage ./pkgs/dptf {
     stdenv = pkgs.gcc7Stdenv;
   };
