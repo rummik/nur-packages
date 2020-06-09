@@ -26,5 +26,6 @@ rec {
 
   immersed-vr = pkgs.callPackage ./pkgs/immersed-vr {};
 
+  nbfc = pkgs.callPackage ./pkgs/nbfc {};
   parsec-gaming = pkgs.callPackage ./pkgs/parsec-gaming {};
 }
