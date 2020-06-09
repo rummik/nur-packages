@@ -23,4 +23,8 @@ rec {
   };
 
   dptfxtract = pkgs.callPackage ./pkgs/dptfxtract {};
+
+  immersed-vr = pkgs.callPackage ./pkgs/immersed-vr {};
+
+  parsec-gaming = pkgs.callPackage ./pkgs/parsec-gaming {};
 }
