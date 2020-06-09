@@ -18,6 +18,8 @@ rec {
   home-manager = hmModules;
   hmModules.modules = import ./home-manager;
 
+  activitywatch = pkgs.callPackage ./pkgs/activitywatch {};
+
   dptf = pkgs.callPackage ./pkgs/dptf {
     stdenv = pkgs.gcc7Stdenv;
   };
