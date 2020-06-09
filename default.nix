@@ -27,4 +27,16 @@ rec {
   immersed-vr = pkgs.callPackage ./pkgs/immersed-vr {};
 
   parsec-gaming = pkgs.callPackage ./pkgs/parsec-gaming {};
+
+  pia-desktop = pkgs.callPackage ./pkgs/pia/desktop {
+    qtbase = pkgs.qt5.qtbase;
+    qtquickcontrols2 = pkgs.qt5.qtquickcontrols2;
+    qtdeclarative = pkgs.qt5.qtdeclarative;
+  };
+
+  pia-daemon = pkgs.callPackage ./pkgs/pia/daemon {
+    qtbase = pkgs.qt5.qtbase;
+    qtquickcontrols2 = pkgs.qt5.qtquickcontrols2;
+    qtdeclarative = pkgs.qt5.qtdeclarative;
+  };
 }
