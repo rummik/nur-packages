@@ -18,6 +18,15 @@ rec {
   home-manager = hmModules;
   hmModules.modules = import ./home-manager;
 
+  zshPlugins = import ./pkgs/zsh-plugins {
+    inherit (pkgs) stdenv lib writeTextFile fetchFromGitHub fetchFromGitLab
+      nix-zsh-completions;
+  };
+
+  zshPackages = import ./pkgs/zsh-packages {
+    mkPackage = args: pkg: pkgs.callPackage pkg args;
+  };
+
   dptf = pkgs.callPackage ./pkgs/dptf {
     stdenv = pkgs.gcc7Stdenv;
   };
