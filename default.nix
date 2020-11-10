@@ -18,6 +18,11 @@ rec {
   home-manager = hmModules;
   hmModules.modules = import ./home-manager;
 
+  vimPlugins = import ./pkgs/vim-plugins {
+    inherit (pkgs) fetchFromGitHub;
+    inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;
+  };
+
   zshPlugins = import ./pkgs/zsh-plugins {
     inherit (pkgs) stdenv lib writeTextFile fetchFromGitHub fetchFromGitLab
       nix-zsh-completions;
